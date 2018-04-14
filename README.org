@@ -1,8 +1,10 @@
 * Qualitics-assignment
-
+  This repository contains the source code implementation of
+  [[https://github.com/ksripathi/qualitics-assignment/blob/master/src/docs/qualitics-assignment.docx?raw=true][assignment]]
 * Pre requisites
-  Following software packages are to be installed to run
-  this application
+  Following are the software packages required to run this
+  application
+
   - emacs > 24.X.X version
     #+BEGIN_EXAMPLE
     sudo su -
@@ -40,17 +42,29 @@
      #+BEGIN_EXAMPLE
      make readtheorg=true
      #+END_EXAMPLE
-  4. Run the application
+  4. Configure the =aws keys= in =config.py= file
+     #+BEGIN_EXAMPLE
+
+     cd build/code/implementation/
+     emacs config.py
+     
+     #+END_EXAMPLE
+  5. Run the application
      #+BEGIN_EXAMPLE
      cd build/code/implementation
      python app.py
      #+END_EXAMPLE
-  5. Access the application
+  6. Access the application
      #+BEGIN_EXAMPLE
      firefox http://localhost:5000
      #+END_EXAMPLE
-     Note : Use the default credentials to login
+
+     Note : Use following credentials to login
+
+     - Username : ksripathi
+
+     - Password : helloworld
 
 
 * API documentation
-  Follow link to refer the api documentation
+  Follow [[https://github.com/ksripathi/qualitics-assignment/blob/master/src/implementation/api.org#rest-api-1][link]] to refer the api documentation

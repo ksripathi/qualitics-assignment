@@ -1,0 +1,11 @@
+#+TITLE: Application
+#+AUTHOR: Sripathi
+#+DATE: [2018-14-04 Sat]
+#+SETUPFILE: ../org-templates/level-1.org
+#+TAGS: boilerplate(b)
+#+EXCLUDE_TAGS: boilerplate
+#+OPTIONS: ^:nil
+
+The =runtime= of the application is defined by:
+
+ - [[./rest/index.org][=REST API=]]
