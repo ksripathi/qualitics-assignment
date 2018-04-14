@@ -11,7 +11,5 @@
   This document has all the requirements to resolve the
   [[../docs/qualitics-assignment.docx][assignment]]
 * Requirements
-** Req1  
-   - Implement REST API 
-** Req2
+  [[../docs/qualitics-assignment.docx][Document]] has all the requirements
 

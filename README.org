@@ -19,6 +19,10 @@
     #+BEGIN_EXAMPLE
     apt-get install make -y
     #+END_EXAMPLE
+  - python-pip
+    #+BEGIN_EXAMPLE
+    apt-get install python-pip -y
+    #+END_EXAMPLE
   - Python packages
     + Flask
       #+BEGIN_EXAMPLE

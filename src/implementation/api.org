@@ -78,7 +78,8 @@ def get_login_page():
             return redirect('/public_api')
         else:
             message =  {
-                "status" : "Access is denied, please login first"
+                "status" : "Access is denied, please login first",
+                "status_code" : 401
             }
             return jsonify(message)
 
@@ -115,7 +116,7 @@ class TestLoginPage(TestCase):
 
 
 ** Public API
-   This API returns json message only if authenticated
+   This API returns message based user authentication status
 
 *** API design  
 
@@ -132,8 +133,18 @@ class TestLoginPage(TestCase):
       + Content : 
       #+BEGIN_EXAMPLE
       {
-      "message" : "you have access"
+      "status" : "you have access",
+      "status_code" : 200
+      }
+      #+END_EXAMPLE
 
+    - Failed Response ::
+      + Code: 401
+      + Content : 
+      #+BEGIN_EXAMPLE
+      {
+      "status" : "Access denied, Please login first",
+      "status_code" : 401
       }
       #+END_EXAMPLE
 
@@ -143,7 +154,7 @@ class TestLoginPage(TestCase):
       #+END_EXAMPLE
 
 *** Implementation
-
+    
 #+NAME: get_json_msg
 #+BEGIN_SRC python
 
@@ -153,11 +164,13 @@ def get_json_msg():
     if request.method == 'GET':
         if 'access_token' in session:
             message =  {
-                "status" : "You have access"
+                "status" : "You have access",
+                "status_code": 200
             }
         else:
             message =  {
-                "status" : "Access is denied, please login first"
+                "status" : "Access is denied, please login first",
+                "status_code" : 401
             }
         return jsonify(message)
     
