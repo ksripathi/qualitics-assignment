@@ -1,0 +1,56 @@
+* Qualitics-assignment
+
+* Pre requisites
+  Following software packages are to be installed to run
+  this application
+  - emacs > 24.X.X version
+    #+BEGIN_EXAMPLE
+    sudo su -
+    apt-get update -y
+    apt-get install emacs -y
+    #+END_EXAMPLE
+  - git (Any version)
+    #+BEGIN_EXAMPLE
+    apt-get install git -y
+    #+END_EXAMPLE
+  - make
+    #+BEGIN_EXAMPLE
+    apt-get install make -y
+    #+END_EXAMPLE
+  - Python packages
+    + Flask
+      #+BEGIN_EXAMPLE
+      pip install flask
+      #+END_EXAMPLE
+    + Warrant
+      #+BEGIN_EXAMPLE
+      pip install warrant
+      #+END_EXAMPLE
+
+* Run app in development environment
+  1. Clone the repository
+     #+BEGIN_EXAMPLE
+     git clone https://github.com/ksripathi/qualitics-assignment
+     #+END_EXAMPLE
+  2. Change directory to =qualitics-assignment=
+     #+BEGIN_EXAMPLE
+     cd qualitics-assignment
+     #+END_EXAMPLE
+  3. Build the sources
+     #+BEGIN_EXAMPLE
+     make readtheorg=true
+     #+END_EXAMPLE
+  4. Run the application
+     #+BEGIN_EXAMPLE
+     cd build/code/implementation
+     python app.py
+     #+END_EXAMPLE
+  5. Access the application
+     #+BEGIN_EXAMPLE
+     firefox http://localhost:5000
+     #+END_EXAMPLE
+     Note : Use the default credentials to login
+
+
+* API documentation
+  Follow link to refer the api documentation
