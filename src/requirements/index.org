@@ -1,4 +1,4 @@
-#+TITLE: Design
+#+TITLE: Requirements
 #+AUTHOR: Sripathi
 #+DATE: [2018-14-04 Sat]
 #+PROPERTY: results output
@@ -8,6 +8,9 @@
 #+LATEX: Literal LaTeX code for export
 
 * Introduction
-  This document has the design to resolve the assignment
-
-* Design
+  This document has all the requirements to resolve the
+  assignment
+* Requirements
+** Req1  
+   - Implement REST API 
+** Req2
