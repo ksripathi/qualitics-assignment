@@ -1,0 +1,22 @@
+{% block content %}
+
+<div id="form" align="center">
+  <h1 style ="align:center"><b>Qualitics Login</b></h1>
+  <br><br>
+  <form id="waterform" method="post" action="/">    
+    <div class="formgroup" id="name-form">
+      <label for="uname">UserName*</label>
+      <input type="text" id="username" name="uname" required/>
+    </div>
+    <br><br>
+    <div class="formgroup" id="name-from">
+      <label for="name">Password*</label>
+      <input type="password" id="passwd" name="pwd" required/>
+    </div>
+    <br>
+    <input type="submit" value="Login"/>
+  </form>
+
+</div>
+
+{% endblock %}

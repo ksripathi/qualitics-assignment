@@ -1,0 +1,229 @@
+#+TITLE: REST API
+#+AUTHOR: Sripathi
+#+DATE: [2018-14-04 Sat]
+#+SETUPFILE: ../../org-templates/level-2.org
+#+TAGS: boilerplate(b)
+#+EXCLUDE_TAGS: boilerplate
+#+OPTIONS: ^:nil
+
+* Introduction 
+  This document illustrates API design, implementation and
+  test cases of the REST API service
+  
+
+* Authenticate function
+  This function authenticates the given username and
+  password with AWS =cognito= service and returns =True= if
+  valid else returns =False=
+
+#+NAME: authenticate_user
+#+BEGIN_SRC python
+def authenticate_user(uname, passwd):
+    try:
+        u = Cognito(COGNITO_POOL_ID, COGNITO_TOKEN, username=uname)
+        u.authenticate(password=passwd)
+        access_token = u.access_token
+        session['access_token'] = access_token
+        return True
+    except Exception as e:
+        print str(e)
+        return False
+    
+#+END_SRC
+  
+
+* REST API 
+  
+** Get Login Page
+   This API returns renders =login.html= page
+
+*** API design  
+
+    - URL :: /
+
+    - Method :: GET
+
+    - URL Params :: None
+
+    - Data Params :: None
+          
+    - Success Response ::
+      + Code: 200
+      + Content : 
+      #+BEGIN_EXAMPLE
+      A page with username, password fileds and login button
+      #+END_EXAMPLE
+
+    - Example call ::
+      #+BEGIN_EXAMPLE
+      http://localhost:5000/
+      #+END_EXAMPLE
+
+*** Implementation
+
+#+NAME: get_login_page
+#+BEGIN_SRC python
+
+@api.route('/', methods=['GET', 'POST'])
+def get_login_page():
+
+    if request.method == 'GET':
+        return render_template("login.html")
+    
+    elif request.method == 'POST':
+        user_name = request.form.get("uname")
+        password = request.form.get("pwd")
+        is_authenticated = authenticate_user(user_name, password)
+        if is_authenticated:
+            return redirect('/public_api')
+        else:
+            message =  {
+                "status" : "Access is denied, please login first"
+            }
+            return jsonify(message)
+
+    else:
+        abort(make_response(jsonify(message="Method not allowed"), 405))
+
+#+END_SRC 
+
+*** Test Cases
+#+NAME: test_get_login_page
+#+BEGIN_SRC python
+class TestLoginPage(TestCase):
+    TESTING = True
+    def create_app(self):
+        app = create_app()
+        return app
+
+    def setUp(self):
+        pass
+
+    def tearDown(self):
+        pass
+
+    def test_get_login_page(self):
+        print "test_get_login_page"
+
+        headers = {'Content-Type': 'application/json'}
+
+        response = self.client.get("/")
+        self.assertEqual(response.status_code, 200)
+
+#+END_SRC
+
+
+
+** Public API
+   This API returns json message only if authenticated
+
+*** API design  
+
+    - URL :: /public_api
+
+    - Method :: GET
+
+    - URL Params :: None
+
+    - Data Params :: None
+          
+    - Success Response ::
+      + Code: 200
+      + Content : 
+      #+BEGIN_EXAMPLE
+      {
+      "message" : "you have access"
+
+      }
+      #+END_EXAMPLE
+
+    - Example call ::
+      #+BEGIN_EXAMPLE
+      http://localhost:5000/publci_api
+      #+END_EXAMPLE
+
+*** Implementation
+
+#+NAME: get_json_msg
+#+BEGIN_SRC python
+
+@api.route('/public_api', methods=['GET'])
+def get_json_msg():
+
+    if request.method == 'GET':
+        if 'access_token' in session:
+            message =  {
+                "status" : "You have access"
+            }
+        else:
+            message =  {
+                "status" : "Access is denied, please login first"
+            }
+        return jsonify(message)
+    
+    else:
+        abort(make_response(jsonify(message="Method not allowed"), 405))
+
+#+END_SRC 
+
+
+* Infra                                                         :boilerplate:
+
+** sources
+*** Imports 
+#+name: imports_for_sources
+#+BEGIN_SRC python
+# -*- coding: utf-8 -*-
+from flask import request, Blueprint, make_response, jsonify, render_template, redirect, session
+import requests
+from warrant import Cognito
+from config import *
+api = Blueprint('APIs', __name__)
+
+#+end_src
+
+
+** tests
+*** Imports 
+#+name: imports_for_tests
+#+BEGIN_SRC python
+# -*- coding: utf-8 -*-
+import unittest
+from flask_testing import TestCase
+from app import create_app
+from api import *
+config = {
+         'SQLALCHEMY_DATABASE_URI': ''
+         }
+
+#+end_src
+
+*** Running tests
+#+NAME: run_test_cases
+#+BEGIN_SRC python
+if __name__ == '__main__':
+    unittest.main()
+
+#+END_SRC
+
+
+* Tangle                                                        :boilerplate:
+  
+** sources
+
+ #+BEGIN_SRC python :tangle api.py :eval no :noweb yes
+
+<<imports_for_sources>>
+<<authenticate_user>>
+<<get_login_page>>
+<<get_json_msg>>
+#+END_SRC
+
+
+** tests
+#+BEGIN_SRC python :tangle test_api.py :eval no :noweb yes
+<<imports_for_tests>>
+<<test_get_login_page>>
+<<run_test_cases>>
+#+end_src
+
