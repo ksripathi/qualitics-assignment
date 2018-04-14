@@ -13,10 +13,7 @@ init:
 
 build: init
 	make -f tangle-make -k all
-
-py-tests:
-	export PYTHONPATH=${PWD}/${CODE_DIR}; find ${PWD}/${CODE_DIR} -name '*test_*.py' -exec python '{}' \;
-
+	rsync -avz src/implementation/templates ${CODE_DIR}/implementation/
 clean:	
 	make -f tangle-make clean
 
