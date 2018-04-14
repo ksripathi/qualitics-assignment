@@ -32,7 +32,7 @@ def authenticate_user(uname, passwd):
 #+END_SRC
   
 
-* REST API 
+* REST API implementation
   
 ** Get Login Page
    This API returns renders =login.html= page

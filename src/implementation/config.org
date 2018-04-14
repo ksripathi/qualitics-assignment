@@ -1,0 +1,30 @@
+#+TITLE: Configuration
+#+AUTHOR: Sripathi
+#+DATE: [2018-14-04 Sat]
+#+SETUPFILE: ../../org-templates/level-2.org
+#+TAGS: boilerplate(b)
+#+EXCLUDE_TAGS: boilerplate
+#+OPTIONS: ^:nil
+
+* Introduction 
+  This document has configuration required to run the
+  application
+
+* Configuration
+#+NAME: config
+#+BEGIN_SRC python
+
+COGNITO_POOL_ID = "us-east-1_j2D96ZnpM"
+COGNITO_TOKEN = "3pc6h7abig5mbcf80i39io59pj"
+
+#+END_SRC 
+
+* Tangle                                                        :boilerplate:
+  
+** sources
+
+ #+BEGIN_SRC python :tangle config.py :eval no :noweb yes
+<<config>>
+#+END_SRC
+
+
