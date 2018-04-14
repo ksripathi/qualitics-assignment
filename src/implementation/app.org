@@ -1,0 +1,53 @@
+#+TITLE: The Flask Web Server
+#+AUTHOR: Sripathi
+#+DATE: [2018-14-04 Sat]
+#+SETUPFILE: ../../org-templates/level-2.org
+#+TAGS: boilerplate(b)
+#+EXCLUDE_TAGS: boilerplate
+#+OPTIONS: ^:nil
+
+* Introduction
+  The application that runs the FLASK web server
+
+  
+* Flask Server
+
+#+NAME: application
+#+BEGIN_SRC python
+def create_app(config):
+    # init our app
+    app = Flask(__name__)
+    app.secret_key = 'djfjsdkjXXS7979dfdfd'
+    app.register_blueprint(api)
+    return app
+
+#+END_SRC
+
+
+* Run Server
+#+BEGIN_SRC python
+#+NAME: run_server
+if __name__ == "__main__":
+    app = create_app()
+    app.run(debug=True, host='0.0.0.0', port=5000, threaded=True)   
+#+END_SRC
+
+
+* Imports                                                       :boilerplate:
+
+#+NAME: imports
+#+BEGIN_SRC python
+# -*- coding: utf-8 -*-
+from flask import Flask
+from api import api
+import os
+
+#+END_SRC
+
+
+* Tangle                                                        :boilerplate:
+#+BEGIN_SRC python :tangle app.py :eval no :noweb yes
+<<imports>>
+<<application>>
+<<run_server>>
+#+END_SRC
