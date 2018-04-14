@@ -8,6 +8,12 @@
 #+LATEX: Literal LaTeX code for export
 
 * Introduction
-  This document has the design to resolve the assignment
+  This document has the design to resolve the [[../docs/qualitics-assignment.docx][assignment]]
 
 * Design
+  #+BEGIN_HTML
+<img src="./qualitics-assignment.png">
+<p align="center"> Qualitics Assignments </p>
+#+END_HTML
+
+  

@@ -9,8 +9,9 @@
 
 * Introduction
   This document has all the requirements to resolve the
-  assignment
+  [[../docs/qualitics-assignment.docx][assignment]]
 * Requirements
 ** Req1  
    - Implement REST API 
 ** Req2
+
