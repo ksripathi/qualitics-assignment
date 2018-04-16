@@ -8,4 +8,6 @@
 
 The =runtime= of the application is defined by:
 
- - [[./rest/index.org][=REST API=]]
+ - [[./app.org][=Application=]]
+
+ - [[./api.org][=REST API=]]
