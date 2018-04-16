@@ -54,12 +54,24 @@
      emacs config.py
      
      #+END_EXAMPLE
-  5. Run the application
+  5. Also configure =aws credentials= inside
+     =~/.aws/credentials= file
+     #+BEGIN_EXAMPLE
+     [default]
+     aws_access_key_id = <value>
+     aws_secret_access_key =  <value>
+     #+END_EXAMPLE
+  6. configure =aws region= inside =~/.aws/config=
+     #+BEGIN_EXAMPLE
+     [default]
+     region = us-east-1
+     #+END_EXAMPLE
+  7. Run the application
      #+BEGIN_EXAMPLE
      cd build/code/implementation
      python app.py
      #+END_EXAMPLE
-  6. Access the application
+  8. Access the application
      #+BEGIN_EXAMPLE
      firefox http://localhost:5000
      #+END_EXAMPLE
