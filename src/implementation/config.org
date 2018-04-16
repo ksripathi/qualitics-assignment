@@ -1,7 +1,7 @@
 #+TITLE: Configuration
 #+AUTHOR: Sripathi
 #+DATE: [2018-14-04 Sat]
-#+SETUPFILE: ../../org-templates/level-2.org
+#+SETUPFILE: ../org-templates/level-1.org
 #+TAGS: boilerplate(b)
 #+EXCLUDE_TAGS: boilerplate
 #+OPTIONS: ^:nil

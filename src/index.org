@@ -1,0 +1,20 @@
+#+TITLE: Qualitics Assignment
+#+AUTHOR: Sripathi
+#+DATE: [2018-04-16 Mon]
+#+SETUPFILE: ./org-templates/level-0.org
+#+TAGS: boilerplate(b)
+#+EXCLUDE_TAGS: boilerplate
+#+OPTIONS: ^:nil
+
+
+* Application
+
+  Solving the assignment is divided into the following
+  phases:
+
+1. [[./requirements/index.org][Requirements]]
+
+2. [[./design/index.org][Design]]
+
+4. [[./implementation/index.org][Implementation]]
+
